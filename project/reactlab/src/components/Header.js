@@ -34,7 +34,7 @@ const socials = [
 
 const Header = () => {
   let previousPosition = useRef(0);
-  let [direction, setDirection] = useState("")
+  let [direction, setDirection] = useState("");
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
@@ -54,12 +54,12 @@ const Header = () => {
     };
     window.addEventListener("scroll", updatePosition);
     return () => {
-      window.removeEventListener("scroll", updatePosition)
-    }
+      window.removeEventListener("scroll", updatePosition);
+    };
   }, []);
 
   return (
-    <Box 
+    <Box
       position={direction === "down" ? "absolute" : "fixed"}
       top={0}
       left={0}
@@ -78,18 +78,30 @@ const Header = () => {
           alignItems="center"
         >
           <nav>
-          <HStack spacing={8}>
-           {socials.map(socialLink => 
-            <a href={socialLink.url} key={socialLink.url}>
-            <FontAwesomeIcon icon={socialLink.icon} size="2x" />
-            </a>
-           )}
-          </HStack>
+            <HStack spacing={8}>
+              {socials.map((socialLink) => (
+                <a href={socialLink.url} key={socialLink.url}>
+                  <FontAwesomeIcon icon={socialLink.icon} size="2x" />
+                </a>
+              ))}
+            </HStack>
           </nav>
           <nav>
             <HStack spacing={8}>
-            <a href="/#projects" onClick={handleClick("projects")} key="projects">Projects</a>
-            <a href="/#contact-me" onClick={handleClick("contactme")} key="contact">Contact Me</a>
+              <a
+                href="./#projects"
+                onClick={handleClick("projects")}
+                key="projects"
+              >
+                Projects
+              </a>
+              <a
+                href="./#contact-me"
+                onClick={handleClick("contactme")}
+                key="contact"
+              >
+                Contact Me
+              </a>
             </HStack>
           </nav>
         </HStack>
